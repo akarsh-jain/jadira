@@ -30,6 +30,7 @@ import org.hibernate.service.spi.SessionFactoryServiceRegistry;
 import org.hibernate.usertype.CompositeUserType;
 import org.hibernate.usertype.UserType;
 import org.jadira.usertype.spi.utils.runtime.JavaVersion;
+import org.hibernate.type.ConcurrentHashMapBackedProperties;
 
 public abstract class AbstractUserTypeHibernateIntegrator implements Integrator {
 
@@ -144,7 +145,7 @@ public abstract class AbstractUserTypeHibernateIntegrator implements Integrator 
 	}
 
 	private void configureDefaultProperties(SessionFactoryImplementor sessionFactory, String javaZone, String databaseZone, String seed, String currencyCode, String jdbc42Apis) {
-		Properties properties = new Properties();
+		ConcurrentHashMapBackedProperties properties = new ConcurrentHashMapBackedProperties();
 		if (databaseZone != null) { properties.put("databaseZone", databaseZone); }
 		if (javaZone != null) { properties.put("javaZone", javaZone); }
 		if (seed != null) { properties.put("seed", seed); }
